@@ -1,0 +1,84 @@
+{
+  "name": "stem-splitter",
+  "productName": "Stem Splitter",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Split songs into vocals, drums, bass and other stems with Demucs",
+  "author": {
+    "name": "tuan-dao",
+    "email": "kael.dev.claude@gmail.com"
+  },
+  "homepage": "http://localhost",
+  "desktopName": "stem-splitter.desktop",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "dist": "pnpm build && electron-builder --linux",
+    "lint": "tsc -b"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild"
+    ]
+  },
+  "build": {
+    "appId": "dev.tuandao.stemsplitter",
+    "productName": "Stem Splitter",
+    "executableName": "stem-splitter",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**"
+    ],
+    "extraResources": [
+      {
+        "from": "python/separate.py",
+        "to": "python/separate.py"
+      },
+      {
+        "from": ".venv",
+        "to": "python/.venv",
+        "filter": [
+          "**/*",
+          "!**/__pycache__/**"
+        ]
+      }
+    ],
+    "electronDist": "node_modules/electron/dist",
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "AudioVideo;Audio",
+      "icon": "build/icon.png",
+      "synopsis": "Split songs into stems locally",
+      "syncDesktopName": true
+    },
+    "deb": {
+      "compression": "gz"
+    }
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "clsx": "^2.1.1",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "lucide-react": "^1.49.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "vite-plugin-electron": "^1.1.2"
+  }
+}

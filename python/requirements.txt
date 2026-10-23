@@ -1,0 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+demucs==4.1.0
+torch==2.14.1
+torchaudio==2.11.0
