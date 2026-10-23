@@ -2,7 +2,7 @@
   "name": "stem-splitter",
   "productName": "Stem Splitter",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Split songs into vocals, drums, bass and other stems with Demucs",
   "author": {
     "name": "tuan-dao",
